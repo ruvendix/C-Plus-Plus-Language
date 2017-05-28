@@ -10,7 +10,6 @@
 
 #include <iostream>
 #include <list>
-#include <vector>
 
 #define PURE = 0
 
