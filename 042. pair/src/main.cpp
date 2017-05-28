@@ -4,12 +4,12 @@
  *       Copyright (c) Ruvendix. 모든 저작권은 본인에게 있습니다.
  *
  * 이 파일은 구글 코딩 가이드 및 개인 코딩 가이드 라인을 따릅니다.
- * 이번에는 std::deque에 자료를 넣어보고 출력해봅니다.
+ * 이번에는 std::pair에 자료를 넣어보고 출력해봅니다.
  *
  */
 
 #include <iostream>
-#include <deque> // deque를 사용하려면 필수!
+#include <utility> // pair를 사용하려면 필수!
 
 #define PURE = 0
 

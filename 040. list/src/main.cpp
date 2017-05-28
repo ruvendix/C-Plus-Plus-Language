@@ -9,7 +9,7 @@
  */
 
 #include <iostream>
-#include <list>
+#include <list> // list를 사용하려면 필수!
 
 #define PURE = 0
 
