@@ -11,89 +11,22 @@
 #include <iostream>
 #include <utility> // pair를 사용하려면 필수!
 
-#define PURE = 0
-
-namespace society
-{
-	class Human
-	{
-	public:
-		virtual void ShowInfo() PURE;
-	};
-
-	class Police : public Human
-	{
-	public:
-		virtual void ShowInfo()
-		{
-			printf("내 직업은 경찰!\n");
-		}
-	};
-
-	class Chief : public Human
-	{
-	public:
-		virtual void ShowInfo()
-		{
-			printf("내 직업은 셰프!\n");
-		}
-	};
-
-	class Detective : public Human
-	{
-	public:
-		virtual void ShowInfo()
-		{
-			printf("내 이름은 코난! 탐정이죠!\n");
-		}
-	};
-}
-
 int main()
 {
-	std::deque<society::Human*> deqHuman;
+	// int와 double을 하나의 type으로 설정!
+	std::pair<int, double> pairData;
 
-	deqHuman.resize(2); // 길이를 2개로 메모리 재할당
+	pairData.first  = 10;    // int를 의미
+	pairData.second = 20.0f; // double을 의미
 
-	// 미리 길이를 2개로 설정했으므로 vecHuman의 길이는 2
-	printf("deqHuman의 길이 : %d\n\n", deqHuman.size());
+	printf("first  : %d\n", pairData.first);
+	printf("second : %.2f\n\n", pairData.second);
 
-	// deqHuman에 요소 2개 대입
-	// 이 경우는 삽입이 아니라 대입임!
-	// 왜냐? 미리 자리를 마련했기 때문!
-	deqHuman[0] = new society::Police;
-	deqHuman[1] = new society::Chief;
+	// pair 값을 만들어서 대입
+	pairData = std::make_pair(20, 10.0f);
 
-	for (int i = 0; i < deqHuman.size(); ++i)
-	{
-		// deqHuman[i]에는 society::Human*가 있음
-		// 포인터 배열을 이용한다고 생각하면 됨
-		deqHuman[i]->ShowInfo();
-	}
-	printf("-------------------------------------------\n");
+	printf("first  : %d\n", pairData.first);
+	printf("second : %.2f\n", pairData.second);
 
-	// 새로운 요소를 넣게되면 메모리 재할당 발생!
-	// 하지만 눈에 보이는 작업이 아니므로 인식하기는 어려움!
-	deqHuman.push_front(new society::Detective);
-	printf("deqHuman의 길이 : %d\n\n", deqHuman.size());
-
-	for (int i = 0; i < deqHuman.size(); ++i)
-	{
-		// deqHuman[i]에는 society::Human*가 있음
-		// 포인터 배열을 이용한다고 생각하면 됨
-		deqHuman[i]->ShowInfo();
-	}
-	printf("-------------------------------------------\n");
-
-	// 컨테이너는 알아서 메모리를 해제하지만
-	// 사용자가 직접 할당해준 메모리는 해제하지 못함!
-	// 따라서 직접 할당해준 메모리는 알아서 해제해야 함!
-	for (int i = 0; i < deqHuman.size(); ++i)
-	{
-		delete deqHuman[i];
-	}
-
-	// 우리 눈에는 보이지 않는 해제 작업
-	deqHuman.clear();
 	return 0;
 }

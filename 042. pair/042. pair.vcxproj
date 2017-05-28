@@ -76,6 +76,9 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>inc/;src/;</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
